@@ -1,6 +1,6 @@
 # PokeBot
 
-A small bot made by me with the purpose to be a fun and interesting Pokémon bot, where Pokémon spawn by time.
+A small discord bot made by myself with the purpose to be a fun and interesting Pokémon bot, where Pokémon spawn by time.
 
 ## Features and Future Features
 
