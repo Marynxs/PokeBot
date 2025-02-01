@@ -103,7 +103,7 @@ async function spawnPokemon(client, channelId) {
              
 
 
-        }, 5000);
+        }, 10000);
 
     } catch (error) {
         console.error('Erro ao buscar o canal:', error.message);

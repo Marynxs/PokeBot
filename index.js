@@ -42,6 +42,9 @@ client.once('ready', async() => {
 
 });
 
+
+
+//Fazer com que seja possivel alternar entre seus pokemons. usando interactions
 client.on('messageCreate', async(message) => {
     if (message.author.bot) return;
     let userMessage = message.content.toLowerCase()
@@ -54,8 +57,29 @@ client.on('messageCreate', async(message) => {
     }
     if(userMessage === "!pokemons") {
         const user = discordServer.users.get(userId); 
-        if (user) {
-            await message.reply(user.listPokemons());
+        if (user && user.pokemons.length > 0) {
+            const embed = new Discord.EmbedBuilder()
+            .setColor(0x00ff00)
+            .setTitle(`${capitalizeFirstLetter(user.pokemons[0].name)}`) 
+            .setDescription(`**Details:**\n` +
+                `Nature: ${capitalizeFirstLetter(user.pokemons[0].nature.name)}\n` +
+                `Gender: ${user.pokemons[0].gender}\n` +
+                `Level: ${user.pokemons[0].level}\n` +
+                `Ability: ${user.pokemons[0].ability}\n`+
+                `\n` +
+                `**Stats**\n` +
+                `**HP**: ${user.pokemons[0].stats[0]} - IV: ${user.pokemons[0].ivs[0]}/31\n` +
+                `**Attack**: ${user.pokemons[0].stats[1]} - IV: ${user.pokemons[0].ivs[1]}/31\n` +
+                `**Defense**: ${user.pokemons[0].stats[2]} - IV: ${user.pokemons[0].ivs[2]}/31\n` +
+                `**Sp. Atk**: ${user.pokemons[0].stats[3]} - IV: ${user.pokemons[0].ivs[3]}/31\n` +
+                `**Sp. Def**: ${user.pokemons[0].stats[4]} - IV: ${user.pokemons[0].ivs[4]}/31\n` +
+                `**Speed**: ${user.pokemons[0].stats[5]} - IV: ${user.pokemons[0].ivs[5]}/31`
+            )
+            .setImage(user.pokemons[0].officialArt)
+            .setTimestamp();
+
+        await message.reply({ embeds: [embed] });
+        
         } else {
             console.log("Usuário não encontrado!");
             await message.reply("You didn't catch any pokemon yet")
@@ -87,6 +111,7 @@ client.on('messageCreate', async(message) => {
                         `Nature: ${capitalizeFirstLetter(activePokemon.nature.name)}\n` +
                         `Gender: ${activePokemon.gender}\n` +
                         `Level: ${activePokemon.level}\n` +
+                        `Ability: ${activePokemon.ability}\n`+
                         `\n` +
                         `**Stats**\n` +
                         `**HP**: ${activePokemon.stats[0]} - IV: ${activePokemon.ivs[0]}/31\n` +

@@ -34,7 +34,7 @@ class Pokemon{
             if (nature.increased_stat && baseStats[i].stat.name === nature.increased_stat.name) {
                 calculatedStat = this.calculateFinalStat(baseStats[i].base_stat,this.ivs[i],this.level, i === 0 ? true : false, "Increase")
             }
-            else if (nature.decreased_stat_stat && baseStats[i].stat.name === nature.decreased_stat.name) {
+            else if (nature.decreased_stat && baseStats[i].stat.name === nature.decreased_stat.name) {
                 calculatedStat = this.calculateFinalStat(baseStats[i].base_stat,this.ivs[i],this.level, i === 0 ? true : false, "Decrease")
             }
             else {
