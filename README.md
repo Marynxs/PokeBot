@@ -16,5 +16,3 @@ A small discord bot made by myself with the purpose to be a fun and interesting 
 
 Contributions are welcome! Feel free to fork the repository and submit pull requests with your improvements or new features.
 
-Feel free to modify this description based on your bot's current state or future plans! 🚀
-
